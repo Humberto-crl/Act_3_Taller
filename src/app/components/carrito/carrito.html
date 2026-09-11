@@ -1,0 +1,67 @@
+<div class="carrito">
+
+    <h2>Carrito de Compras</h2>
+
+    <div *ngIf="productosCarrito.length === 0">
+
+        No hay productos en el carrito.
+
+    </div>
+
+    <table *ngIf="productosCarrito.length > 0">
+        <thead>
+
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let producto of productosCarrito">
+
+                <td>{{ producto.nombre }}</td>
+
+                <td>
+                    {{ producto.precio | currency:'GTQ' }}
+                </td>
+
+                <td>
+
+                    <input
+                        type="number"
+                        min="1"
+                        [value]="producto.cantidad"
+                        (change)="actualizarCantidad(producto.id, $event)">
+
+                </td>
+
+                <td>
+
+                    {{ producto | subtotal }}
+
+                </td>
+
+                <td>
+
+                    <button
+                        (click)="eliminar(producto.id)">
+
+                        Eliminar
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

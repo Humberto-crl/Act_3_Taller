@@ -1,0 +1,19 @@
+<div class="resumen">
+
+    <h2>Resumen</h2>
+
+    <p>
+
+        Productos:
+        {{ productosCarrito.length }}
+
+    </p>
+
+    <p>
+
+        Total:
+        {{ productosCarrito | total | currency:'GTQ' }}
+
+    </p>
+
+</div>
